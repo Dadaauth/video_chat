@@ -203,7 +203,7 @@ export class Call {
         this.peerConnect.callType = data.type;
         changeFrontendUi({type: "call incoming", data});
         acceptCallButton.addEventListener('click', e => this.acceptOrDenyCall(true, data));
-        denyCallButton.addEventListener('click', e => this.acceptOrDenyCall(false));
+        denyCallButton.addEventListener('click', e => this.acceptOrDenyCall(false, data));
     }
 
     async initializeLocalMediaStream(constraints) {

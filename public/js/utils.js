@@ -37,6 +37,8 @@ export function changeFrontendUi(effect) {
     } else if (effect.type === "call denied") {
         startVideoCallButton.style.display = "inline-block";
         startAudioCallButton.style.display = "inline-block";
+        acceptCallButton.style.display = "none";
+        denyCallButton.style.display = "none";
         stopCallButton.style.display = "none";
         callStatus.style.display = "none";
     } else if (effect.type === "call accepted") {
