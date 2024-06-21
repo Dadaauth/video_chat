@@ -1,12 +1,13 @@
 import express from 'express';
-import https from 'https';
+//import https from 'https';
+import http from "http";
 import { dirname } from 'node:path';
 import path from 'path';
 import { fileURLToPath } from 'node:url';
 import { Server as SocketIOServer } from 'socket.io';
 import * as fs from 'fs';
 
-
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -15,7 +16,7 @@ const privateKey = fs.readFileSync(path.join(__dirname, 'key.pem'), 'utf8');
 const certificate = fs.readFileSync(path.join(__dirname, 'cert.pem'), 'utf8');
 const credentials = {key: privateKey, cert: certificate};
 
-const server = https.createServer(credentials, app);
+const server = http.createServer(app);
 const io = new SocketIOServer(server);
 
 
@@ -89,8 +90,6 @@ io.on("connection", async (socket) => {
         socket.broadcast.to(data.room).emit("ice candidate from peer", data);
     });
 });
-
-const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
