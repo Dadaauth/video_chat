@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Video Chat</title>
+</head>
+<body>
+    <div class="video-inline-container" id="video-inline-container">
+        <div class="videoContainer">
+            <video id="remoteVideo" src="./3 Body Problem S01E07 - Only Advance (Awafim.tv).mkv" autoplay playsinline muted></video>
+            <!-- <video id="remoteVideo" autoplay playsinline></video> -->
+            <!-- <video id="localVideo" class="localVideo" autoplay playsinline muted></video> -->
+            <video id="localVideo" src="./3 Body Problem S01E07 - Only Advance (Awafim.tv).mkv" class="localVideo" autoplay playsinline muted></video>
+        </div>
+    </div>
+    <audio id="audioStream" autoplay playsinline></audio>
+    <br>
+    <p class="error" id="error">Error:</p>
+    <p id="displayUserId">Your Call Id is: ...</p>
+    <select name="users" id="usersToCall">
+    </select>
+    <div class="callActions">
+        <button id="callStatus" class="callActionsButton" style="display: none;">Calling</button>
+        <button id="startVideoCall" class="callActionsButton">Video Call</button>
+        <button id="startAudioCall" class="callActionsButton">Audio Call</button>
+        <button id="stopCall" class="callActionsButton">Stop</button>
+        <button id="acceptCall" class="callActionsButton">Accept</button>
+        <button id="denyCall" class="callActionsButton">Deny</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
